@@ -6,7 +6,7 @@ pipeline {
       choice(name:'VERSION', choices: "${VERSION}",,description:"Type of action to perform")
 	  choice(name:'COMPONENT_NAME', choices: ['PL','SL','CTPL','CTSL'], description:'')
    }
-   try{
+   
    stages {
       stage("build"){
 	    steps{
@@ -33,9 +33,6 @@ pipeline {
 	  }
 	  
    }
-}
-catchError(stageResult: 'ABORTED') {
-    echo "some one abortedthe buildgit "
-}
+
 
 }
