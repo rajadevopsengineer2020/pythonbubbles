@@ -12,6 +12,9 @@ pipeline {
 	    steps{
 		   echo 'Building'
 		   build 'test1'
+		   catchError(buildResult: 'UNSTABLE', catchInterruptions: false, message: 'stage failed', stageResult: 'FAILURE') {
+                    bat 'exit 1'
+                }
 		}
 	  }
 	  
@@ -32,7 +35,7 @@ pipeline {
    }
 }
 catchError(stageResult: 'ABORTED') {
-    echo "some one abortedthe build"
+    echo "some one abortedthe buildgit "
 }
 
 }
