@@ -1,0 +1,9 @@
+pipeline{
+   agent any
+   
+   parameters
+   {
+    echo "parameters"
+    choice(name:'VERSION',choices:"${VERSION}",description:'Type of action to perform'
+   
+}
