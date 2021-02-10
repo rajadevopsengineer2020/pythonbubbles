@@ -1,9 +1,26 @@
 pipeline{
    agent any
    
-   parameters
-   {
-    echo "choice parameters "
-    choice(name:'VERSION',choices:"${VERSION}",description:'Type of action to perform'
-   
+   stages {
+      stage("build"){
+	    steps{
+		   echo 'Building'
+		}
+	  }
+	  
+	  stage("Test"){
+	     steps{
+		   echo 'Testing ..'
+		 }
+	  }
+	  
+	  stage("Deploy"){
+	     steps{
+		 
+		   echo 'Deploying...'
+		 }
+	  
+	  }
+	  
+   }
 }
