@@ -3,7 +3,7 @@ pipeline{
    
    parameters
    {
-    echo "parameters"
+    echo "choice parameters "
     choice(name:'VERSION',choices:"${VERSION}",description:'Type of action to perform'
    
 }
