@@ -1,0 +1,38 @@
+pipeline {
+   agent any
+   
+   parameters
+   {
+      choice(name:'VERSION', choices: "${VERSION}",,description:"Type of action to perform")
+	  choice(name:'COMPONENT_NAME', choices: ['PL','SL','CTPL','CTSL'], description:'')
+   }
+   
+   stages {
+      stage("build"){
+	    steps{
+		   echo 'Building'
+		   build 'test1'
+		   catchError(buildResult: 'UNSTABLE', catchInterruptions: false, message: 'stage failed', stageResult: 'FAILURE') {
+                    bat 'exit 1'
+                }
+		}
+	  }
+	  
+	  stage("Test"){
+	     steps{
+		   echo 'Testing ..'
+		 }
+	  }
+	  
+	  stage("Deploy"){
+	     steps{
+		 
+		   echo 'Deploying...'
+		 }
+	  
+	  }
+	  
+   }
+
+
+}
